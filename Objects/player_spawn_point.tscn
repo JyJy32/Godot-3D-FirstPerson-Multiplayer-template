@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckgg1okq46opa"]
+
+[ext_resource type="Script" uid="uid://c2n8qppl3i418" path="res://Objects/scripts/PlayerSpawnPoint.cs" id="1_4p8a5"]
+[ext_resource type="Script" uid="uid://bcjlspnth3qui" path="res://scenes/levels/scripts/PlayerSpawner.cs" id="2_ugc4k"]
+
+[node name="PlayerSpawnPoint" type="Node3D"]
+script = ExtResource("1_4p8a5")
+
+[node name="Players" type="Node" parent="."]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Players")
+script = ExtResource("2_ugc4k")

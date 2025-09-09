@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl2njs4btnbj1"]
+
+[ext_resource type="Script" uid="uid://mm5wdljkqy5y" path="res://UI/main_menu/MainMenu.cs" id="1_6dn6y"]
+
+[node name="MainMenu" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_6dn6y")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInfo" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -199.0
+offset_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PlayerInfo"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Menu/PlayerInfo/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="Name" type="RichTextLabel" parent="Menu/PlayerInfo/VBoxContainer"]
+layout_mode = 2
+fit_content = true
+
+[node name="Main" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartLobbyButton" type="Button" parent="Menu/Main/VBoxContainer"]
+layout_mode = 2
+text = "Start Lobby"
+
+[node name="JoinGameButton" type="Button" parent="Menu/Main/VBoxContainer"]
+layout_mode = 2
+text = "Join Game"
+
+[node name="CreatePlayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreatePlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.297993, 0.297993, 0.297993, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreatePlayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreatePlayer/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameInput" type="LineEdit" parent="CreatePlayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CreatePlayer/VBoxContainer"]
+layout_mode = 2
+text = "Create"
+
+[connection signal="pressed" from="Menu/Main/VBoxContainer/StartLobbyButton" to="." method="onStartServerButtonPressed"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/JoinGameButton" to="." method="onJoinButtonPressed"]
+[connection signal="pressed" from="CreatePlayer/VBoxContainer/Button" to="." method="onPlayerCreateButtonPressed"]

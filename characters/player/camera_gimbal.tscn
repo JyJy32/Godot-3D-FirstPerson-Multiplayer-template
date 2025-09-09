@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://byfb6hnye3iuq"]
+
+[ext_resource type="Script" uid="uid://bnquf8n76xoal" path="res://characters/player/scripts/CameraGimbal.cs" id="1_5aaiu"]
+
+[node name="CameraGimbal" type="Node3D"]
+script = ExtResource("1_5aaiu")
+
+[node name="InnerGimbal" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="InnerGimbal"]
+cull_mask = 1047551

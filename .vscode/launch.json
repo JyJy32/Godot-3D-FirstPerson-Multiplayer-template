@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "console": "internalConsole",
+            "program": "${env:Godot4}"
+        },
+        {
+            "name": "Debug Scene",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${env:Godot4}",
+            "console": "internalConsole",
+            "args": [
+                "--upwards",
+                "${workspaceFolder}/scenes/Main.tscn",
+                "-q"
+            ]
+        },
+        {
+            "name": "Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+        
+    ]
+}

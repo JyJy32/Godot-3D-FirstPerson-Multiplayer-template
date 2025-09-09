@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://txlenuf0yulb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_15drc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwonl"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_15drc"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Box" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_15drc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_vwonl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_15drc")

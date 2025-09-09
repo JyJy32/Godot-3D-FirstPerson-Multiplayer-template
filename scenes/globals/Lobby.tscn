@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://f3hlvp2bily"]
+
+[ext_resource type="Script" uid="uid://ca62g3i2kd6gg" path="res://scenes/globals/scripts/Lobby.cs" id="1_stud2"]
+
+[node name="Lobby" type="Node"]
+script = ExtResource("1_stud2")
+
+[node name="LobbyInfo" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Players" type="Label" parent="LobbyInfo"]
+layout_mode = 2
+
+[node name="PlayerList" type="VBoxContainer" parent="LobbyInfo"]
+layout_mode = 2
+
+[node name="Address" type="Label" parent="LobbyInfo"]
+layout_mode = 2
+
+[node name="Chat" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Menu" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+offset_right = 180.0
+offset_bottom = 31.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/StartGame" to="." method="onStartGameButtonPressed"]
