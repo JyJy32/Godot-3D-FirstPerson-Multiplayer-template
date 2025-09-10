@@ -4,10 +4,7 @@ using System;
 public partial class Main : Node
 {
     [Export]
-    public PackedScene DemoScene;
-    [Export]
-    public PackedScene gameMenu;
-
+    public PackedScene DemoScene; // this scene is for debug purposes
     PlayerInfo playerInfo;
     Lobby lobby;
     MainMenu mainMenu;
@@ -41,9 +38,10 @@ public partial class Main : Node
     {
         if (Multiplayer.IsServer())
         {
-            //load level
-            Node level = DemoScene.Instantiate() as Node;
-            SceneSpawner.Spawn(level);
+            Node demo = DemoScene.Instantiate();
+            SceneSpawner.Spawn(demo);
+            return;
+
         }
     }
 
@@ -72,7 +70,8 @@ public partial class Main : Node
     private void onReturnToMenu()
     {
         Node level = GetNode("Level");
-        foreach (Node child in level.GetChildren()) {
+        foreach (Node child in level.GetChildren())
+        {
             level.RemoveChild(child);
         }
         mainMenu.Visible = true;

@@ -7,20 +7,20 @@ script = ExtResource("1_stud2")
 
 [node name="LobbyInfo" type="VBoxContainer" parent="."]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(200, 0)
+offset_right = 53.0
+offset_bottom = 62.0
 
 [node name="Players" type="Label" parent="LobbyInfo"]
 layout_mode = 2
 
 [node name="PlayerList" type="VBoxContainer" parent="LobbyInfo"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Address" type="Label" parent="LobbyInfo"]
+[node name="LeaveButton" type="Button" parent="LobbyInfo"]
 layout_mode = 2
+text = "Leave"
 
 [node name="Chat" type="Control" parent="."]
 visible = false
@@ -31,6 +31,12 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
+
+[node name="Label" type="Label" parent="Chat"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Chat goes here"
 
 [node name="Menu" type="Control" parent="."]
 visible = false
@@ -58,4 +64,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Start"
 
+[connection signal="button_up" from="LobbyInfo/LeaveButton" to="." method="onLeaveButtonPressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/StartGame" to="." method="onStartGameButtonPressed"]

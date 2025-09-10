@@ -100,6 +100,7 @@ public partial class Lobby : Node
         }
         Multiplayer.MultiplayerPeer = peer;
         lobbyInfo.Visible = true;
+        lobbyInfo.GetNode<Button>("LeaveButton").Text = "Leave";
         chat.Visible = true;
     }
 
@@ -119,6 +120,7 @@ public partial class Lobby : Node
         Players[playerInfo.peerID] = playerInfo;
         EmitSignal("PlayerConnected", playerInfo);
         lobbyInfo.Visible = true;
+        lobbyInfo.GetNode<Button>("LeaveButton").Text = "Close Lobby";
         menu.Visible = true;
         chat.Visible = true;
     }
@@ -126,7 +128,7 @@ public partial class Lobby : Node
     public void removeMPPeer()
     {
         Multiplayer.MultiplayerPeer = null;
-        
+
     }
 
     [Rpc(CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
@@ -160,7 +162,9 @@ public partial class Lobby : Node
             }
             Multiplayer.MultiplayerPeer.Close();
             removeMPPeer();
+            Players = new Dictionary<long, PlayerInfo>();
             lobbyInfo.Visible = false;
+            menu.Visible = false;
         }
         else
         {
@@ -171,8 +175,14 @@ public partial class Lobby : Node
                 Multiplayer.MultiplayerPeer.Close();
                 removeMPPeer();
             }
+            Players = new Dictionary<long, PlayerInfo>();
             lobbyInfo.Visible = false;
         }
+    }
+
+    private void onLeaveButtonPressed()
+    {
+        ReturnToMainMenu();
     }
 
     private void onPlayerConnected(long peerId)
@@ -224,5 +234,7 @@ public partial class Lobby : Node
     {
         EmitSignal("LobbyGameStarted");
         menu.Visible = false;
+        lobbyInfo.Visible = true;
+        chat.Visible = true;
     }
 }
